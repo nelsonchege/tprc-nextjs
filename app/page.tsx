@@ -3,8 +3,10 @@
 import { trpc } from '@/utils/trpc'
 import { Card } from 'primereact/card';
 import { useState } from 'react';
+import { Skeleton } from "@/components/ui/skeleton"
 import "primereact/resources/themes/lara-light-indigo/theme.css";     
 import "primereact/resources/primereact.min.css";
+import React from 'react';
 
 export default function Home() {
   const [name ,setName] =useState('')
@@ -21,7 +23,7 @@ export default function Home() {
   if (isFetching) return <Loading/>
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-8 ">
-      <form className='w-1/2 mb-8' onSubmit={handleSubmit}>
+      <form className='w-2/3 mb-8' onSubmit={handleSubmit}>
         <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Car Brand</label>
         <input value={name} onChange={(e)=>setName(e.target.value)} type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
         <label htmlFor="url" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">urlt</label>
@@ -46,5 +48,15 @@ export default function Home() {
 }
 
 function Loading() {
-  return <h1>🌀 Loading...</h1>;
+  return (
+  <React.Fragment>
+    <main className="min-h-screen min-w-screen flex-col items-center justify-between p-8 grid grid-cols-4 gap-4 sm:gap-1 md:gap-2">
+        {Array.from({length: 5}, (_, i) => i).map(i =>(
+          <div className="w-[200px] h-[200px]  bg-slate-800"  key={i}>
+            <Skeleton className="w-[100px] h-[20px] rounded-full" />
+          </div>
+        ))}
+    </main>
+  </React.Fragment>
+  );
 }

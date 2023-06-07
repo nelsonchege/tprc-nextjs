@@ -7,6 +7,7 @@ const t = initTRPC.create();
 export const appRouter = t.router({
     userById: t.procedure
         .query(async() => {
+            setTimeout(()=>console.log('------------done with timeout--------'), 200000);
             const data = await prisma.resource.findMany();
             return data;
         }),
