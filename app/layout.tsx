@@ -1,7 +1,6 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import {TrpcProvider} from "@/utils/TrpcProvider";
 
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,7 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className='h-14 bg-gradient-to-r from-violet-500 to-fuchsia-500'>
+        <TrpcProvider>
+           {children}
+        </TrpcProvider>
+      </body>
     </html>
   )
 }
