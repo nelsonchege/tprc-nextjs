@@ -6,11 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url  	= env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
 }
-
 model Resource {
   id String @id @default(uuid())
   name String

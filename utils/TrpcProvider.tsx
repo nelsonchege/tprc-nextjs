@@ -8,7 +8,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { env } from "process";
 
 export const TrpcProvider: React.FC<{ children: React.ReactNode }> = (p) => {
-  const url = process.env.TRPC_URL || "https://cars-brands.vercel.app/api/trpc";
+  const url = process.env.TRPC_URL || "http://localhost:3000/api/trpc";
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
     trpc.createClient({
